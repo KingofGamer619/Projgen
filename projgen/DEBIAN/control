@@ -1,0 +1,9 @@
+Package: projgen
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: all
+Depends: bash (>= 4.0)  
+Maintainer: Kingofgamer619 
+Description: A simple project generator for Android, LibGDX, and Java applications.
+ This package provides a command-line tool to create new projects easily.

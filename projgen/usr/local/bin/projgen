@@ -1,0 +1,57 @@
+#!/bin/bash
+
+echo "Welcome to Project Creator!"
+echo "Select the type of project you want to create:"
+echo "1. Android Project"
+echo "2. LibGDX Project"
+echo "3. Java Console Application"
+echo "4. Java GUI Application"
+read -p "Enter your choice (1-4): " project_type
+
+read -p "Enter your project name: " project_name
+read -p "Enter your package name (e.g., com.example.myapp): " package_name
+
+case $project_type in
+    1)
+        echo "Creating Android Project..."
+        # Create Android project using the official template
+        mkdir "$project_name"
+        cd "$project_name"
+        gradle init --type java-application
+        echo "apply plugin: 'com.android.application'" >> build.gradle
+        echo "android {" >> build.gradle
+        echo "    compileSdkVersion 31" >> build.gradle
+        echo "    defaultConfig {" >> build.gradle
+        echo "        applicationId \"$package_name\"" >> build.gradle
+        echo "        minSdkVersion 21" >> build.gradle
+        echo "        targetSdkVersion 31" >> build.gradle
+        echo "        versionCode 1" >> build.gradle
+        echo "        versionName \"1.0\"" >> build.gradle
+        echo "    }" >> build.gradle
+        echo "}" >> build.gradle
+        echo "Project created at $(pwd)"
+        ;;
+    2)
+        echo "Creating LibGDX Project..."
+        # Here you would call a LibGDX setup script if available
+        echo "LibGDX project setup is more complex; please refer to the LibGDX documentation for CLI setup."
+        ;;
+    3)
+        echo "Creating Java Console Application..."
+        mkdir "$project_name"
+        cd "$project_name"
+        gradle init --type java-application
+        echo "Project created at $(pwd)"
+        ;;
+    4)
+        echo "Creating Java GUI Application..."
+        mkdir "$project_name"
+        cd "$project_name"
+        gradle init --type java-application
+        echo "Project created at $(pwd)"
+        # You might need to add GUI dependencies and classes here
+        ;;
+    *)
+        echo "Invalid option selected."
+        ;;
+esac
